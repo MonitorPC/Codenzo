@@ -26,11 +26,11 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm run ci
 
       # Lint
       - name: Lint project
-        run: npm lint
+        run: npm run lint
 
   Test:
     name: Test
@@ -47,11 +47,11 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm run ci
 
       # Test
       - name: Test project
-        run: npm test
+        run: npm run test
 
   Build:
     name: Build for Vercel
@@ -68,7 +68,7 @@ jobs:
 
       # Install Vercel CLI
       - name: Install Vercel CLI
-        run: npm global add vercel@latest
+        run: npm install -g vercel@latest
 
       # Pull Vercel Environment Information
       - name: Pull Vercel Environment Information
@@ -111,7 +111,7 @@ jobs:
 
       # Install Vercel CLI
       - name: Install Vercel CLI
-        run: npm global add vercel@latest
+        run: npm install -g vercel@latest
 
       # Deploy
       - name: Deploy Project Artifacts to Vercel
