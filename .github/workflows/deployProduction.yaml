@@ -26,18 +26,23 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: build-artifacts
-          path: prod-build/
+          name: build
+          path: .vercel/output
 
   Deploy-Vercel:
     needs: Build
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v7
+
       - name: Download build artifacts
         uses: actions/download-artifact@v7
         with:
-          name: build-artifacts
-          path: prod-build/
+          name: build
+          path: .vercel/output
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
